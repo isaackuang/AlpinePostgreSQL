@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv sh
+
+if [ ! -f $PGDATA/postgresql.conf ];then
+    s6-setuidgid postgres initdb
+    cp /configs/postgresql.conf $PGDATA/.
+    cp /configs/pg_hba.conf $PGDATA/.
+    chown -R postgres.postgres $PGDATA
+fi
+
+mkdir -p /run/postgresql
+chown -R postgres.postgres /run/postgresql
