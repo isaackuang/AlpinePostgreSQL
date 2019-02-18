@@ -7,5 +7,6 @@ if [ ! -f $PGDATA/postgresql.conf ];then
     chown -R postgres.postgres $PGDATA
 fi
 
+chmod 700 /data/postgresql
 mkdir -p /run/postgresql
 chown -R postgres.postgres /run/postgresql
